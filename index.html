@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>LunarLander</title>
+</head>
+<body>
+<script>
+var px,py,pw=50,ph=30;
+var cLen=40,cAng=0,cAngVel=0.1;
+
+window.onload = function(){
+    canvas = document.createElement("canvas");
+    canvas.width = 800;
+    canvas.height =600;
+    document.body.appendChild(canvas);
+    canvasContext = canvas.getContext("2d");
+    setInterval(update, 1000/30);
+    px=canvas.width/2;
+    py=canvas.height-ph;
+}
+
+function update() {
+    canvasContext.fillStyle="black";
+    canvasContext.fillRect(0,0,canvas.width,canvas.height);
+    canvasContext.fillStyle="white";
+    canvasContext.fillRect(px-pw/2,py,pw,ph);
+
+    cAng += cAngVel;
+    canvasContext.strokeStyle="red";
+    canvasContext.lineWidth=6;
+    canvasContext.beginPath();
+    canvasContext.moveTo(px,py);
+    canvasContext.lineTo(px+cLen*Math.cos(cAng), py+cLen*Math.sin(cAng));
+    canvasContext.stroke();
+
+
+}
+
+
+</script>
+</body>
+</html>
